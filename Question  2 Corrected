@@ -1,0 +1,35 @@
+class Square
+{
+    constructor(length)
+    {
+        this.length = length;
+    }
+    calculateArea()
+    {
+        return this.length ** 2;
+    }
+}
+console.log("Length \t\t Area");
+ 
+function createSquareArray()
+{
+    var len;
+    var sqArray = [];
+    for(var i = 0; i < 10; i++)
+    {
+        len = 10 + Math.floor(Math.random() * 11);
+        sqArray.push(new Square(len));//This is the line that gave me problems
+    }
+    return sqArray;
+}
+ 
+function printSquareArray()
+{
+    for (var i = 0; i < 10; i++)
+    {
+        console.log(myArray[i].length + "\t\t" + myArray[i].calculateArea().toFixed(1));
+    }
+}
+ 
+var myArray = createSquareArray();
+printSquareArray(myArray);
