@@ -1,1 +1,194 @@
+var input = require("readline-sync");
+class Contact
+{
+    constructor(name, mobileNumber)
+    {
+        this.name = name;
+        this.mobileNumber = mobileNumber;
+    }
+    getContactDetails()
+    {
+        var s = "Name: " + this.name;
+        s += "\nMobile Number: " + this.mobileNumber;
+        return s;
+        /*this.name = input.question("Name: ");
+        this.mobileNumber = input.questionInt("Mobile Number: ");*/
+    }
+}
+var name = input.question("Name: ");
+var MobileNumber = input.questionInt("Mobile Number: ");
+console.log(new Contact(name + MobileNumber));
 
+class AddressBook
+{
+    constructor() {
+        this.myContact = [];  //class property
+        this.myContact.push(new Contact("Homer", 98849959));
+        this.myContact.push(new Contact("Marge", 84774744));
+        this.myContact.push(new Contact("Lisa", 86994994));
+        this.myContact.push(new Contact("Maggie", 94775883));
+        this.myContact.push(new Contact("Bart", 88838848));
+    } //end constructor
+
+    getNumberOfContacts()
+    {
+        return this.myContact.length;
+    }
+
+    getContactAt(index)
+    {
+        /*switch(index)
+        {
+            case 1:
+                return this.myContact[0];
+                break;
+            case 2:
+                return this.myContact[1];
+                break;
+            case 3:
+                return this.myContact[2];
+                break;
+            case 4:
+                return this.myContact[3];
+                break;
+            case 5:
+                return this.myContact[4];
+                break;
+            default:
+                console.log("The end");
+                break;
+        }*/
+        return this.myContact[index];
+    }
+
+    searchContact(Contact)
+    {
+        /*for (var i = 0; i < 5; i ++)
+        {
+            if (Contact == this.myContact[Contact])
+            {
+                return this.myContact.find(Contact);
+            }
+            
+            else
+            {
+                return console.log("User name not found!");
+            }
+        }*/
+        for (var i = 0; i < this.getNumberOfContacts; i++)
+        {
+            if (this.Contact[i].name.toLowerCase() == name.toLowerCase())
+            return this.myContact[i].mobileNumber;
+        }
+        return "Contact Not Found!";
+    }
+}//Main program starts here
+
+var Choice = 0;
+var Options = "";
+var myAddressBook = new AddressBook();
+var c;
+do 
+{
+    console.log("Personal Addressbook\n--------------------------");
+    console.log("(1) Show All Contacts\n(2) Search Contact\n(3) Exit\n\n");
+    c = input.questionInt(">>");
+    if (c == 1)
+    {
+        showAllContacts();
+    }
+    else if (c == 2)
+    {
+        search();
+    }
+    while (c != 3);
+    console.log("Good Bye!");
+}
+
+while(Choice != 3)
+{
+    console.log("Personal Addressbook\n--------------------------");
+    console.log("(1) Show All Contacts\n(2) Search Contact\n(3) Exit\n\n");
+    Choice = input.questionInt(">>");
+
+    switch(Choice)
+{
+    case 1://Show all contacts
+    function showAllContacts()
+    {
+        var o;
+        var pos = 0;
+        do
+        {
+            var Print;
+            console.log("\n" + "---------------------------" + "\n");
+            console.log(myAddressBook.getContactAt(pos + 1) + " of " + myAddressBook.getNumberOfContacts());
+            console.log("\n" + "---------------------------" + "\n");
+            console.log(Print.getContactDetails());
+            console.log("\n" + "---------------------------" + "\n");
+            console.log("\n(Press N for next contact, P for previous contact, X to exit)");
+            o = input.question("\n>>");
+            if (o.toUpperCase() == "N")
+            {
+                if (pos < myAddressBook.getNumberOfContacts() - 1)
+                {
+                    pos++;
+                }
+                else if (o.toUpperCase() == "P")
+                {
+                    if (pos > 0)
+                    {
+                        pos--;
+                    }
+                    while(o.toUpperCase() == "X")
+                    {
+                        console.log("Closing");
+                    }
+                }
+            }
+        }
+    }
+
+    /*if (Options == "X"||"x")
+    {
+        break;
+    }
+    else if (Options == "P"||"p")
+    {
+        for (var i = 5; i > 0; i--)
+        {
+            getContactAt();
+        }
+    }
+    while (Options == "N"||"n")
+    {
+        for (var i = 0; i < 5; i++)
+        {
+            getContactAt();
+        }
+    }
+        break;
+        //showAllContacts();
+
+    case 2://Search Contact
+        /*var Name = input.question("Enter the name of the contact: ");
+        if (searchContact())//if name exist, then print, else, return none
+        {
+            console.log(Name + "'s mobile number is " /*+ Contact);
+        }
+        else
+        {
+            console.log("Sorry, user doesn't exist!");
+        }
+        break;*/
+        searchContact();
+
+    case 3://Exit
+        console.log("Good Bye!");
+        break;
+
+    default:
+        console.log("Please enter a valid input.");
+        break;
+    }
+}
