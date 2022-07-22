@@ -1,0 +1,26 @@
+class Square
+{
+    constructor(length)
+    {
+        this.length = length;
+    }
+    calculateArea()
+    {
+        return this.length ** 2;
+    }
+}
+console.log("Length \t\t Area");
+
+var sqArray = new Array();//var sqArray = [];
+
+for (var i = 0; i < 10; i++)
+{
+    var random = Math.floor(Math.random() * 11) + 10;
+    sqArray.push(new Square(Math.floor(math.random() * 11) + 10));  
+    sqArray.push(random);
+    var Square1 = new Square(sqArray[i]);
+    for (var i = 0; i < sqArray[i].length; i++)
+    {
+        console.log(sqArray[i].length + "\t\t" + sqArray[i].calculateArea());
+    }
+}
